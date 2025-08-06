@@ -9,7 +9,7 @@
 using namespace std;
 
 class DatabaseManager {
-private:
+public:
     sqlite3* db;
     bool initialized;
     map<string, sqlite3_stmt*> preparedStatements;
@@ -287,22 +287,13 @@ public:
     
 private:
     bool createTables() {
-        string createTableSQL = R"(
-            CREATE TABLE IF NOT EXISTS data_records (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL,
-                value TEXT,
-                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-            );
-            
-            CREATE TABLE IF NOT EXISTS performance_metrics (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                query_time REAL,
-                success BOOLEAN,
-                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-            );
-        )";
-        
+        string createTableSQL = 
+            "CREATE TABLE IF NOT EXISTS data_records ("
+            "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            "name TEXT NOT NULL,"
+            "value TEXT,"
+            "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)";
+                 
         return executeQuery(createTableSQL);
     }
     
