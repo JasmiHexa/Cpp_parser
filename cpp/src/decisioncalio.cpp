@@ -204,6 +204,12 @@ int main() {
         cout << "\n";
     }
     
+    // 9. Ternary Operator Examples
+    cout << "9. Ternary Operator Examples:\n";
+    cout << "Max of a and b: " << ((a > b) ? a : b) << "\n";
+    int sample = 7;
+    cout << sample << " is " << ((sample % 2 == 0) ? "even" : "odd") << "\n\n";
+
     cout << "Thank you for using the C++ Calculator!\n";
     return 0;
 }
